@@ -1,4 +1,8 @@
-# Computer Use Turbo
+<h1 align="center">Computer Use Turbo</h1>
+
+<p align="center">
+  <img src="assets/showcase.png" alt="An agent working in TextEdit in the background: the status pill at the top right, and the live preview with the agent's pointer inside the agent's window" width="100%">
+</p>
 
 **Let any AI agent operate the desktop apps on your computer in the background, safely, with you in control.**
 
