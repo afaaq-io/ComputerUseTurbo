@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "about": "Default safety policy of Computer Use Turbo, shared by every platform helper. 'protected' apps can never be controlled (system authentication and system settings). 'sensitive' apps hold credentials: the user confirms them once per session in the helper's own card, which warns about secrets and prompt injection; no other app asks. The app hosting the agent and the helper itself are protected automatically at runtime. Users can un-protect an app in <support>/allow-protected.txt.",
+  "protected": {
+    "macos": [
+      "com.apple.SecurityAgent",
+      "com.apple.LocalAuthentication.UIAgent",
+      "com.apple.UserNotificationCenter",
+      "com.apple.loginwindow",
+      "com.apple.systempreferences"
+    ],
+    "windows": [
+      "consent.exe",
+      "credentialuibroker.exe",
+      "logonui.exe",
+      "systemsettings.exe",
+      "mmc.exe",
+      "regedit.exe"
+    ],
+    "linux": [
+      "polkit-gnome-authentication-agent-1",
+      "polkit-kde-authentication-agent-1",
+      "gnome-control-center",
+      "systemsettings"
+    ]
+  },
+  "sensitive": {
+    "macos": [
+      "com.apple.keychainaccess",
+      "com.apple.Passwords",
+      "com.1password.1password",
+      "com.agilebits.onepassword7",
+      "com.bitwarden.desktop",
+      "com.lastpass.LastPass",
+      "com.dashlane.Dashlane",
+      "in.sinew.Enpass-Desktop"
+    ],
+    "windows": [
+      "1password.exe",
+      "bitwarden.exe",
+      "keepass.exe",
+      "keepassxc.exe",
+      "enpass.exe",
+      "dashlane.exe"
+    ],
+    "linux": [
+      "1password",
+      "bitwarden",
+      "keepassxc",
+      "seahorse",
+      "enpass"
+    ]
+  }
+}

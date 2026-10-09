@@ -1,0 +1,13 @@
+# Build output
+target/
+.build/
+build/
+.swiftpm/
+*.xcodeproj/
+DerivedData/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store

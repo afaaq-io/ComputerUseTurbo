@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Computer Use Turbo</string>
+	<key>CFBundleExecutable</key>
+	<string>TurboHelper</string>
+	<key>CFBundleIdentifier</key>
+	<string>dev.cuturbo.helper</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>Computer Use Turbo</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>0.1.0</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.productivity</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSSupportsAutomaticTermination</key>
+	<false/>
+	<key>NSSupportsSuddenTermination</key>
+	<false/>
+	<key>NSAccessibilityUsageDescription</key>
+	<string>Computer Use Turbo reads the accessibility tree of apps you approve and clicks, types and presses keys in them on behalf of your AI agent.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>Computer Use Turbo captures screenshots of the windows of apps you approve so your AI agent can see them.</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2026 afaaq.io. MIT License.</string>
+</dict>
+</plist>
