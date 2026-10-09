@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.afaaq-io/computer-use-turbo",
+  "title": "Computer Use Turbo",
+  "description": "Let any AI agent operate desktop apps on macOS, Windows and Linux, in the background and safely.",
+  "websiteUrl": "https://github.com/afaaq-io/ComputerUseTurbo",
+  "repository": {
+    "url": "https://github.com/afaaq-io/ComputerUseTurbo",
+    "source": "github",
+    "subfolder": "server"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "computer-use-turbo",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
