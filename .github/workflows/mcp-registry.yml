@@ -1,0 +1,23 @@
+# Publishes server/server.json to the MCP Registry. Run it by hand after a new npm release.
+# GitHub's OIDC token proves the repo belongs to afaaq-io, so no secret is needed.
+name: Publish to MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install mcp-publisher
+        run: curl -fsSL https://github.com/modelcontextprotocol/registry/releases/download/v1.8.1/mcp-publisher_linux_amd64.tar.gz | tar xz mcp-publisher
+      - name: Publish
+        working-directory: server
+        run: |
+          ../mcp-publisher login github-oidc
+          ../mcp-publisher publish
