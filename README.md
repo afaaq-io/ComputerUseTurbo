@@ -1,12 +1,12 @@
 # Computer Use Turbo
 
-**Let any AI agent operate the desktop apps on your computer — in the background, safely, with you in control.**
+**Let any AI agent operate the desktop apps on your computer in the background, safely, with you in control.**
 
 Computer Use Turbo is a cross-platform computer-use toolkit developed by **[afaaq.io](https://afaaq.io)**.
 It gives AI agents a fast, reliable way to see and operate real desktop applications on macOS,
 Windows and Linux. Instead of guessing from pixels alone, the agent reads each app's
 accessibility tree as numbered lines, sees a screenshot of the window, and acts on exact
-elements — while you keep using your computer.
+elements while you keep using your computer.
 
 It speaks the open [Model Context Protocol](https://modelcontextprotocol.io) (MCP), so it works
 with any MCP-capable agent: desktop assistants, IDE agents, command-line agents and agent SDKs.
@@ -164,7 +164,7 @@ Restart the agent and try, for example:
 - **Works in the background.** The agent operates apps behind your windows and never moves
   your mouse. A small live preview beside your agent's window shows what it is doing. The few
   steps that cannot run in the background (a menu-bar menu, a file drag, apps that draw their
-  own interface) briefly bring the app forward — only while you are idle — and hand the front
+  own interface) briefly bring the app forward only while you are idle and hand the front
   straight back.
 - **Built for models.** Each app is presented as numbered lines (`#12 button "Save"`) plus a
   screenshot. Later observations report only what changed, and what happened in between
@@ -176,7 +176,7 @@ Restart the agent and try, for example:
   Control Center, Notification Center and Spotlight through their menu-bar status items.
 - **Safe by default.** Password fields are never typed into, password managers need your
   confirmation, system authentication is protected, and you can stop the agent at any time.
-  Everything else — including terminals — is available right away; your agent's own
+  Everything else including terminals is available right away; your agent's own
   permission prompts stay in charge.
 
 ## Supported platforms
