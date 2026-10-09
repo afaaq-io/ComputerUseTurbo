@@ -28,6 +28,9 @@ export const HELPER_NAMES = Object.freeze({
 export const CONNECT_RETRY_INTERVAL_MS = 250;
 export const CONNECT_RETRY_TOTAL_MS = 10_000;
 
+/** Where people installing from npm (without the repo) find the helper's build steps. */
+export const INSTALL_GUIDE = 'https://github.com/afaaq-io/ComputerUseTurbo#installation';
+
 /** server/ (the npm package root): this file lives in server/src/. */
 export const PACKAGE_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -102,11 +105,9 @@ function defaultExists(p) {
  * @param {{path: string, source: string}[]} candidates
  */
 export function helperNotFoundMessage(candidates) {
-  const repoRoot = resolve(PACKAGE_DIR, '..');
   return [
     `The Computer Use Turbo helper was not found. Looked in: ${candidates.map((c) => `${c.path} (${c.source})`).join('; ')}.`,
-    'Build and install it, then try again:',
-    `  cd ${repoRoot} && ./scripts/build.sh && ./scripts/install.sh`,
+    `Build and install it (${INSTALL_GUIDE}), then try again,`,
     'and grant it the accessibility and screen-capture permissions your OS asks for.',
     'Alternatively set CUT_HELPER_APP to the absolute path of a built helper.',
   ].join('\n');
@@ -241,7 +242,7 @@ export async function connectWithLaunch({
     'helperFault',
     `${what} (last error: ${describe(lastError)}). ` +
       `Make sure the helper can start (it runs in the background) and check ${helperLogPath()}. ` +
-      'If it is not installed, run scripts/build.sh and scripts/install.sh.',
+      `If it is not installed, follow ${INSTALL_GUIDE}.`,
     { cause: lastError },
   );
 }

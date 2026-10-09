@@ -1,0 +1,17 @@
+{
+  "name": "computer-use-turbo",
+  "displayName": "Computer Use Turbo",
+  "description": "Let Claude operate the desktop apps on your computer in the background: it reads each app's interface as numbered elements, sees a screenshot of the window and acts on exact elements. Needs the Computer Use Turbo helper app (see the README).",
+  "version": "0.1.0",
+  "author": { "name": "afaaq.io", "url": "https://afaaq.io" },
+  "homepage": "https://github.com/afaaq-io/ComputerUseTurbo",
+  "repository": "https://github.com/afaaq-io/ComputerUseTurbo",
+  "license": "MIT",
+  "keywords": ["mcp", "computer-use", "desktop-automation", "accessibility", "macos", "windows", "linux"],
+  "mcpServers": {
+    "turbo": {
+      "command": "npx",
+      "args": ["-y", "computer-use-turbo@0.1.0"]
+    }
+  }
+}

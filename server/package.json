@@ -1,11 +1,30 @@
 {
-  "name": "computer-use-turbo-server",
+  "name": "computer-use-turbo",
   "version": "0.1.0",
-  "private": true,
-  "description": "Computer Use Turbo MCP server: lets any MCP-capable AI agent operate desktop apps through the platform helper",
+  "mcpName": "io.github.afaaq-io/computer-use-turbo",
+  "description": "MCP server that lets any AI agent operate the desktop apps on macOS, Windows and Linux, in the background and safely. Needs the Computer Use Turbo helper app.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "computer-use",
+    "ai-agents",
+    "desktop-automation",
+    "accessibility",
+    "claude-code",
+    "codex"
+  ],
+  "homepage": "https://github.com/afaaq-io/ComputerUseTurbo#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afaaq-io/ComputerUseTurbo.git",
+    "directory": "server"
+  },
+  "bugs": "https://github.com/afaaq-io/ComputerUseTurbo/issues",
+  "license": "MIT",
+  "author": "afaaq.io",
   "type": "module",
   "bin": {
-    "computer-use-turbo-server": "src/server.mjs"
+    "computer-use-turbo": "src/server.mjs"
   },
   "main": "src/server.mjs",
   "files": [
@@ -16,12 +35,12 @@
   },
   "scripts": {
     "start": "node src/server.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "prepack": "cp ../README.md ../LICENSE .",
+    "postpack": "rm -f README.md LICENSE"
   },
-  "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.1",
     "zod": "^4.6.5"
-  },
-  "author": "afaaq.io"
+  }
 }

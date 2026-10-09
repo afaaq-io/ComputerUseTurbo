@@ -115,6 +115,18 @@ The server is named `turbo` because some agent apps reserve names beginning with
 
 #### Claude Code
 
+Install the plugin from the afaaq.io marketplace:
+
+```bash
+claude plugin marketplace add afaaq-io/ComputerUseTurbo
+```
+
+```bash
+claude plugin install computer-use-turbo@afaaq-io
+```
+
+Or add the server from your copy directly:
+
 ```bash
 claude mcp add --scope user turbo -- node /path/to/ComputerUseTurbo/server/src/server.mjs
 ```

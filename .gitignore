@@ -11,3 +11,7 @@ node_modules/
 
 # OS
 .DS_Store
+
+# Copied in by npm pack (server/package.json prepack)
+server/README.md
+server/LICENSE
