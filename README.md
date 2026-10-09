@@ -37,11 +37,11 @@ code, build the helper for your system, then connect your agent.
 ### 1. Get the code
 
 ```bash
-git clone https://github.com/afaaq-io/computer-use-turbo.git
+git clone https://github.com/afaaq-io/ComputerUseTurbo.git
 ```
 
 ```bash
-cd computer-use-turbo
+cd ComputerUseTurbo
 ```
 
 ### 2. Build and install the helper
@@ -104,7 +104,7 @@ gsettings set org.gnome.desktop.interface toolkit-accessibility true
 ### 3. Connect your agent
 
 The MCP server is `server/src/server.mjs` inside your copy. In the commands below, replace
-`/path/to/computer-use-turbo` with the folder you cloned into (`pwd` prints it).
+`/path/to/ComputerUseTurbo` with the folder you cloned into (`pwd` prints it).
 
 The server is named `turbo` because some agent apps reserve names beginning with
 "computer-use" for their own built-in tools.
@@ -112,7 +112,7 @@ The server is named `turbo` because some agent apps reserve names beginning with
 #### Claude Code
 
 ```bash
-claude mcp add --scope user turbo -- node /path/to/computer-use-turbo/server/src/server.mjs
+claude mcp add --scope user turbo -- node /path/to/ComputerUseTurbo/server/src/server.mjs
 ```
 
 Check it with `claude mcp list`, then start a new Claude Code session.
@@ -120,7 +120,7 @@ Check it with `claude mcp list`, then start a new Claude Code session.
 #### Codex
 
 ```bash
-codex mcp add turbo -- node /path/to/computer-use-turbo/server/src/server.mjs
+codex mcp add turbo -- node /path/to/ComputerUseTurbo/server/src/server.mjs
 ```
 
 Or add it to `~/.codex/config.toml` by hand:
@@ -128,7 +128,7 @@ Or add it to `~/.codex/config.toml` by hand:
 ```toml
 [mcp_servers.turbo]
 command = "node"
-args = ["/path/to/computer-use-turbo/server/src/server.mjs"]
+args = ["/path/to/ComputerUseTurbo/server/src/server.mjs"]
 ```
 
 #### Any other MCP agent
@@ -148,7 +148,7 @@ configuration:
   "mcpServers": {
     "turbo": {
       "command": "node",
-      "args": ["/path/to/computer-use-turbo/server/src/server.mjs"]
+      "args": ["/path/to/ComputerUseTurbo/server/src/server.mjs"]
     }
   }
 }
