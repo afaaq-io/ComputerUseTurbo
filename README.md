@@ -15,21 +15,147 @@ with any MCP-capable agent: desktop assistants, IDE agents, command-line agents 
 
 ## Contents
 
+- [Installation](#installation)
 - [Highlights](#highlights)
 - [Supported platforms](#supported-platforms)
 - [Architecture](#architecture)
 - [Components](#components)
-- [Installation](#installation)
-- [Connecting an agent](#connecting-an-agent)
 - [Tools](#tools)
 - [Safety and privacy](#safety-and-privacy)
 - [Configuration](#configuration)
 - [Development](#development)
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
-- [About afaaq.io](#about-afaaqio)
 
 ---
+
+## Installation
+
+Every platform needs **Node.js 20 or later** and Git. Installing takes three steps: get the
+code, build the helper for your system, then connect your agent.
+
+### 1. Get the code
+
+```bash
+git clone https://github.com/afaaq-io/computer-use-turbo.git
+```
+
+```bash
+cd computer-use-turbo
+```
+
+### 2. Build and install the helper
+
+#### macOS
+
+Requirements: macOS 14 or later and Xcode or the Command Line Tools. An Apple Development
+signing certificate is recommended; without one, macOS forgets the granted permissions after
+every rebuild.
+
+```bash
+scripts/build.sh
+```
+
+```bash
+scripts/install.sh
+```
+
+Then allow **Computer Use Turbo** in System Settings ▸ Privacy & Security under
+**Accessibility** and **Screen & System Audio Recording**. The installer prints shortcuts to
+both panes.
+
+#### Windows
+
+Requirements: Rust with the MSVC toolchain. In PowerShell:
+
+```powershell
+scripts\build.ps1
+```
+
+```powershell
+scripts\install.ps1
+```
+
+The helper is installed to `%LOCALAPPDATA%\Programs\ComputerUseTurbo`. No permission grants are
+needed.
+
+#### Linux
+
+Requirements: Rust, a desktop session with accessibility (AT-SPI) enabled, and the PipeWire,
+xkbcommon and clang development packages (on Debian and Ubuntu: `libpipewire-0.3-dev
+libspa-0.2-dev libxkbcommon-dev clang libclang-dev`). Wayland sessions need a desktop portal
+with RemoteDesktop and ScreenCast support (GNOME, KDE Plasma, COSMIC).
+
+```bash
+scripts/build.sh
+```
+
+```bash
+scripts/install.sh
+```
+
+The helper is installed to `~/.local/bin/computer-use-turbo-helper`. On Wayland, the installer
+asks you once to allow screen sharing. To enable accessibility on GNOME:
+
+```bash
+gsettings set org.gnome.desktop.interface toolkit-accessibility true
+```
+
+### 3. Connect your agent
+
+The MCP server is `server/src/server.mjs` inside your copy. In the commands below, replace
+`/path/to/computer-use-turbo` with the folder you cloned into (`pwd` prints it).
+
+The server is named `turbo` because some agent apps reserve names beginning with
+"computer-use" for their own built-in tools.
+
+#### Claude Code
+
+```bash
+claude mcp add --scope user turbo -- node /path/to/computer-use-turbo/server/src/server.mjs
+```
+
+Check it with `claude mcp list`, then start a new Claude Code session.
+
+#### Codex
+
+```bash
+codex mcp add turbo -- node /path/to/computer-use-turbo/server/src/server.mjs
+```
+
+Or add it to `~/.codex/config.toml` by hand:
+
+```toml
+[mcp_servers.turbo]
+command = "node"
+args = ["/path/to/computer-use-turbo/server/src/server.mjs"]
+```
+
+#### Any other MCP agent
+
+Desktop assistants, IDE agents and agent SDKs take the standard MCP entry. Print it with the
+full paths for your machine filled in:
+
+```bash
+scripts/mcp-config.sh
+```
+
+On Windows, run `scripts\mcp-config.ps1`. Add the printed entry to your agent's MCP
+configuration:
+
+```json
+{
+  "mcpServers": {
+    "turbo": {
+      "command": "node",
+      "args": ["/path/to/computer-use-turbo/server/src/server.mjs"]
+    }
+  }
+}
+```
+
+Restart the agent and try, for example:
+*"Use computer use to open TextEdit, write a short note and make the title bold."*
 
 ## Highlights
 
@@ -139,90 +265,6 @@ How each step is carried out:
 
 `build` and `install` for each platform (`.sh` for macOS and Linux, `.ps1` for Windows), and
 `mcp-config`, which prints the entry to add to your agent's configuration.
-
-## Installation
-
-Every platform needs **Node.js 20 or later**.
-
-### macOS
-
-Requirements: macOS 14 or later and Xcode or the Command Line Tools. An Apple Development
-signing certificate is recommended; without one, macOS forgets the granted permissions after
-every rebuild.
-
-```bash
-scripts/build.sh
-```
-
-```bash
-scripts/install.sh
-```
-
-Then allow **Computer Use Turbo** in System Settings ▸ Privacy & Security under
-**Accessibility** and **Screen & System Audio Recording**. The installer prints shortcuts to
-both panes.
-
-### Windows
-
-Requirements: Rust with the MSVC toolchain. In PowerShell:
-
-```powershell
-scripts\build.ps1
-```
-
-```powershell
-scripts\install.ps1
-```
-
-The helper is installed to `%LOCALAPPDATA%\Programs\ComputerUseTurbo`. No permission grants are
-needed.
-
-### Linux
-
-Requirements: Rust, a desktop session with accessibility (AT-SPI) enabled, and the PipeWire,
-xkbcommon and clang development packages (on Debian and Ubuntu: `libpipewire-0.3-dev
-libspa-0.2-dev libxkbcommon-dev clang libclang-dev`). Wayland sessions need a desktop portal
-with RemoteDesktop and ScreenCast support (GNOME, KDE Plasma, COSMIC).
-
-```bash
-scripts/build.sh
-```
-
-```bash
-scripts/install.sh
-```
-
-The helper is installed to `~/.local/bin/computer-use-turbo-helper`. On Wayland, the installer
-asks you once to allow screen sharing. To enable accessibility on GNOME:
-
-```bash
-gsettings set org.gnome.desktop.interface toolkit-accessibility true
-```
-
-## Connecting an agent
-
-Print the MCP server entry for your installation:
-
-```bash
-scripts/mcp-config.sh
-```
-
-On Windows, run `scripts\mcp-config.ps1`. Add the entry to your agent's MCP configuration:
-
-```json
-{
-  "mcpServers": {
-    "turbo": {
-      "command": "node",
-      "args": ["/path/to/computer-use-turbo/server/src/server.mjs"]
-    }
-  }
-}
-```
-
-The entry is named `turbo` because some agent apps reserve names beginning with
-"computer-use" for their own built-in tools. Restart the agent and try, for example:
-*"Use computer use to open TextEdit, write a short note and make the title bold."*
 
 ## Tools
 
@@ -358,8 +400,3 @@ text format, key parsing and the wire protocol.
 Computer Use Turbo is released under the [MIT License](LICENSE).
 
 Copyright © 2026 afaaq.io.
-
-## About afaaq.io
-
-Computer Use Turbo is designed and developed by **[afaaq.io](https://afaaq.io)**, a software
-company.
