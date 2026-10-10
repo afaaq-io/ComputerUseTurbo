@@ -6,7 +6,7 @@
     {
       "name": "computer-use-turbo",
       "source": "./",
-      "description": "Let Claude operate the desktop apps on your computer in the background, safely, with you in control."
+      "description": "Let any AI agent operate the desktop apps on your computer in the background, safely, with you in control."
     }
   ]
 }
